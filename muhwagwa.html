@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>무화과</title>
+<meta name="theme-color" content="#2c1d12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&family=Nanum+Pen+Script&family=Nanum+Brush+Script&family=Gaegu:wght@700&family=Gamja+Flower&family=Hi+Melody&family=Dokdo&family=Yeon+Sung&family=Single+Day&family=Stylish&family=East+Sea+Dokdo&family=Poor+Story&family=Cute+Font&family=Gugi&family=Gowun+Dodum&family=Song+Myung&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ece7df; --muted:rgba(236,231,223,.58); --mamba:#b8d62b; --hair:rgba(255,255,255,.12);
+    --thread:#c9a24a;
+    --swatch: radial-gradient(120% 100% at 30% 0%, rgba(255,255,255,.09), transparent 48%), linear-gradient(158deg,#4b3624,#33241a 64%,#281a10);
+    --ease:cubic-bezier(.23,1,.32,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{overflow-x:hidden;-webkit-text-size-adjust:100%;}
+  body{font-family:"Jost",system-ui,sans-serif;color:var(--paper);
+    background:linear-gradient(170deg,#1a140e,#0b0906 72%);background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;min-height:100dvh;}
+  .bar{position:sticky;top:0;z-index:20;display:flex;gap:12px 20px;flex-wrap:wrap;align-items:center;
+    padding:calc(env(safe-area-inset-top) + 11px) 16px 11px;
+    background:rgba(18,14,10,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--hair);}
+  .grp{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+  .grp .lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-right:2px;}
+  .chip{font:inherit;font-size:12.5px;color:var(--paper);background:rgba(255,255,255,.06);border:1px solid var(--hair);
+    border-radius:999px;padding:0 14px;height:36px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+    transition:background .18s var(--ease),border-color .18s,transform .12s var(--ease);}
+  .chip .dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(255,255,255,.35);}
+  .chip:active{transform:scale(.95);}
+  .chip[aria-pressed="true"]{background:var(--mamba);color:#16200a;border-color:var(--mamba);font-weight:600;}
+  .chip:focus-visible{outline:2px solid var(--mamba);outline-offset:2px;}
+  @media(hover:hover){.chip:hover{border-color:rgba(184,214,43,.5);}}
+  .dl{margin-left:auto;background:var(--mamba);color:#16200a;border:0;border-radius:999px;height:38px;padding:0 18px;
+    font:inherit;font-size:12.5px;font-weight:700;letter-spacing:.02em;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+    transition:transform .12s var(--ease),filter .18s var(--ease);}
+  .dl:active{transform:scale(.96);} @media(hover:hover){.dl:hover{filter:brightness(1.06);}}
+  .dl svg{width:15px;height:15px;}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:18px 16px 60px;max-width:1320px;margin:0 auto;}
+  @media(max-width:1024px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr;gap:14px;padding:14px 14px 48px;}}
+  .card{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.07);
+    box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 16px 36px -22px rgba(0,0,0,.85);
+    transition:transform .4s var(--ease),box-shadow .3s var(--ease),opacity .5s var(--ease);}
+  @media(scripting:enabled){.card{opacity:0;transform:translateY(12px);}.card.in{opacity:1;transform:none;}}
+  @media(hover:hover){.card:hover{transform:translateY(-5px);box-shadow:0 22px 46px -22px rgba(0,0,0,.9),0 0 0 1px rgba(184,214,43,.22);}}
+  .swatch{background:var(--swatch);min-height:208px;display:flex;align-items:center;justify-content:center;padding:24px 18px;position:relative;}
+  .swatch::after{content:"";position:absolute;inset:11px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;pointer-events:none;}
+  .kr{color:var(--thread);font-size:clamp(66px,11vw,92px);line-height:1.06;letter-spacing:.04em;text-align:center;
+    text-shadow:0 1px 1px rgba(0,0,0,.55),0 -1px 0 rgba(255,255,255,.10);transition:color .25s var(--ease);}
+  .nm{font-size:11px;letter-spacing:.02em;color:var(--muted);padding:10px 12px;background:rgba(8,6,4,.6);border-top:1px solid var(--hair);text-align:center;}
+  /* ---- print / PDF: full quality, even spacing ---- */
+  @media print{
+    @page{ size:letter landscape; margin:0.45in; }
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    html,body{background:#fff;}
+    .bar{display:none;}
+    .grid{grid-template-columns:repeat(3,1fr);gap:0.28in;padding:0;max-width:none;}
+    .card{opacity:1!important;transform:none!important;box-shadow:none;border-color:rgba(0,0,0,.18);break-inside:avoid;page-break-inside:avoid;}
+    .swatch{min-height:2.5in;}
+    .kr{font-size:64px;}
+  }
+  @media (prefers-reduced-motion: reduce){.card{opacity:1!important;transform:none!important;transition:box-shadow .2s ease;}}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <div class="grp" id="leathers">
+      <span class="lbl">Leather</span>
+      <button class="chip" data-leather="mamba" aria-pressed="false"><span class="dot" style="background:#3c5417"></span>Mamba</button>
+      <button class="chip" data-leather="espresso" aria-pressed="true"><span class="dot" style="background:#4b3624"></span>Espresso</button>
+      <button class="chip" data-leather="black" aria-pressed="false"><span class="dot" style="background:#1a1a16"></span>Black</button>
+    </div>
+    <div class="grp" id="threads">
+      <span class="lbl">Thread</span>
+      <button class="chip" data-thread="#c9a24a" aria-pressed="true"><span class="dot" style="background:#c9a24a"></span>Gold</button>
+      <button class="chip" data-thread="#d4d7db" aria-pressed="false"><span class="dot" style="background:#d4d7db"></span>Silver</button>
+      <button class="chip" data-thread="#f4f2ec" aria-pressed="false"><span class="dot" style="background:#f4f2ec"></span>White</button>
+    </div>
+    <button class="dl" id="dl" aria-label="Download as PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download PDF
+    </button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+<script>
+  // Korean signature / hand fonts — name, weight
+  var FONTS=[
+    ["Nanum Pen Script",400],["Nanum Brush Script",400],["Gaegu",700],["Gamja Flower",400],
+    ["Hi Melody",400],["Dokdo",400],["Yeon Sung",400],["Single Day",400],["Stylish",400],
+    ["East Sea Dokdo",400],["Poor Story",400],["Cute Font",400],["Gugi",400],
+    ["Gowun Dodum",400],["Song Myung",400]
+  ];
+  var LEATHER={
+    mamba:"radial-gradient(120% 100% at 30% 0%, rgba(255,255,255,.10), transparent 48%), linear-gradient(158deg,#3c5417,#27380e 68%,#1b2908)",
+    espresso:"radial-gradient(120% 100% at 30% 0%, rgba(255,255,255,.09), transparent 48%), linear-gradient(158deg,#4b3624,#33241a 64%,#281a10)",
+    black:"radial-gradient(120% 100% at 30% 0%, rgba(255,255,255,.08), transparent 48%), linear-gradient(158deg,#23231d,#151510 68%,#0b0b08)"
+  };
+  var grid=document.getElementById('grid'), root=document.documentElement;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  FONTS.forEach(function(f){
+    var c=document.createElement('article'); c.className='card';
+    c.innerHTML='<div class="swatch"><span class="kr" style="font-family:\''+f[0]+'\';font-weight:'+f[1]+'">무화과</span></div><div class="nm">'+f[0]+'</div>';
+    grid.appendChild(c);
+  });
+  var cards=Array.prototype.slice.call(grid.children);
+  if(!reduce && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.filter(function(e){return e.isIntersecting;})
+        .sort(function(a,b){return cards.indexOf(a.target)-cards.indexOf(b.target);})
+        .forEach(function(e,i){var el=e.target,d=Math.min(i,5)*50;el.style.transitionDelay=d+'ms';el.classList.add('in');io.unobserve(el);
+          setTimeout(function(){el.style.transitionDelay='';},560+d);});
+    },{rootMargin:'0px 0px -5% 0px',threshold:.05});
+    cards.forEach(function(c){io.observe(c);});
+  } else { cards.forEach(function(c){c.classList.add('in');}); }
+  function wire(id,fn){var g=document.getElementById(id);g.addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;
+    g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});fn(b);});}
+  wire('leathers',function(b){root.style.setProperty('--swatch',LEATHER[b.dataset.leather]);});
+  wire('threads',function(b){root.style.setProperty('--thread',b.dataset.thread);});
+  // Download PDF — uses the browser's print-to-PDF for full vector quality
+  document.getElementById('dl').addEventListener('click',function(){
+    if(document.fonts&&document.fonts.ready){document.fonts.ready.then(function(){window.print();});}
+    else{window.print();}
+  });
+</script>
+</body>
+</html>
