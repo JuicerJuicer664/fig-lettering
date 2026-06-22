@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fig · 무화과 — Lockups</title>
+<meta name="theme-color" content="#2c1d12">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Pinyon+Script&family=Mr+Dafoe&family=Bebas+Neue&family=Montserrat:wght@600&family=Jost:wght@400;500&family=Nanum+Pen+Script&family=Nanum+Brush+Script&family=Nanum+Myeongjo:wght@800&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#ece7df; --muted:rgba(236,231,223,.58); --mamba:#b8d62b; --hair:rgba(255,255,255,.12);
+    --thread:#c9a24a;
+    --swatch: radial-gradient(120% 100% at 30% 0%, rgba(255,255,255,.09), transparent 48%), linear-gradient(158deg,#4b3624,#33241a 64%,#281a10);
+    --ease:cubic-bezier(.23,1,.32,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{overflow-x:hidden;-webkit-text-size-adjust:100%;}
+  body{font-family:"Jost",system-ui,sans-serif;color:var(--paper);
+    background:linear-gradient(170deg,#1a140e,#0b0906 72%);background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;min-height:100dvh;padding-bottom:64px;}
+  .bar{position:sticky;top:0;z-index:20;display:flex;gap:12px 22px;flex-wrap:wrap;align-items:center;
+    padding:calc(env(safe-area-inset-top) + 11px) 18px 11px;
+    background:rgba(18,14,10,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--hair);}
+  .grp{display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+  .grp .lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-right:2px;}
+  .chip{font:inherit;font-size:12.5px;color:var(--paper);background:rgba(255,255,255,.06);border:1px solid var(--hair);
+    border-radius:999px;padding:0 14px;height:36px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+    transition:background .18s var(--ease),border-color .18s,transform .12s var(--ease);}
+  .chip .dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(255,255,255,.35);}
+  .chip:active{transform:scale(.95);}
+  .chip[aria-pressed="true"]{background:var(--mamba);color:#16200a;border-color:var(--mamba);font-weight:600;}
+  .chip:focus-visible{outline:2px solid var(--mamba);outline-offset:2px;}
+  .wrap{max-width:1080px;margin:0 auto;padding:26px 18px 0;}
+  .kick{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--mamba);font-weight:600;text-align:center;margin-bottom:22px;}
+  /* lockup panel = leather front */
+  .panel{background:var(--swatch);border-radius:18px;border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 26px 60px -26px rgba(0,0,0,.85);
+    position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    transition:transform .4s var(--ease),box-shadow .3s var(--ease),opacity .6s var(--ease);}
+  .panel::after{content:"";position:absolute;inset:14px;border:1px dashed rgba(255,255,255,.12);border-radius:11px;pointer-events:none;}
+  @media(scripting:enabled){.panel{opacity:0;transform:translateY(16px);}.panel.in{opacity:1;transform:none;}}
+  @media(hover:hover){.panel:hover{transform:translateY(-4px);box-shadow:0 32px 66px -26px rgba(0,0,0,.92),0 0 0 1px rgba(184,214,43,.2);}}
+  .fig{color:var(--thread);line-height:1;text-shadow:0 1px 1px rgba(0,0,0,.5),0 -1px 0 rgba(255,255,255,.10);transition:color .25s var(--ease);}
+  .kr{color:var(--thread);line-height:1;letter-spacing:.06em;text-shadow:0 1px 1px rgba(0,0,0,.5),0 -1px 0 rgba(255,255,255,.10);transition:color .25s var(--ease);}
+  .seam{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--thread),transparent);opacity:.85;margin:6px 0;}
+  /* hero */
+  .hero{min-height:46vh;padding:46px 24px;}
+  .hero .fig{font-family:"Allura",cursive;font-size:clamp(92px,17vw,168px);}
+  .hero .kr{font-family:"Nanum Pen Script",cursive;font-size:clamp(40px,8vw,72px);}
+  .hero .seam{width:120px;margin:14px 0 16px;}
+  /* caption */
+  .cap{text-align:center;padding:16px 8px 0;}
+  .cap .nm{font-family:"Jost";font-weight:500;font-size:15px;letter-spacing:.02em;}
+  .cap .nm b{color:var(--mamba);font-weight:600;}
+  .cap .pair{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:7px;}
+  .cap .why{font-size:12.5px;color:var(--muted);margin-top:9px;max-width:46ch;margin-left:auto;margin-right:auto;line-height:1.5;}
+  .reco{display:inline-block;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#16200a;background:var(--mamba);
+    border-radius:6px;padding:3px 9px;font-weight:700;margin-bottom:12px;}
+  /* alternates row */
+  .alts{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:46px;}
+  @media(max-width:720px){.alts{grid-template-columns:1fr;gap:38px;}}
+  .alt .panel{min-height:30vh;padding:34px 20px;}
+  .alt.couture .fig{font-family:"Pinyon Script",cursive;font-size:clamp(74px,12vw,108px);}
+  .alt.couture .kr{font-family:"Nanum Myeongjo",serif;font-weight:800;font-size:clamp(30px,6vw,42px);letter-spacing:.12em;}
+  .alt.gt .fig{font-family:"Bebas Neue",sans-serif;font-size:clamp(72px,12vw,110px);letter-spacing:.04em;}
+  .alt.gt .kr{font-family:"Black Han Sans",sans-serif;font-size:clamp(30px,6vw,44px);letter-spacing:.04em;}
+  .alt.gt .row{display:flex;align-items:baseline;gap:18px;}
+  .alt.gt .row .bar2{width:1px;height:42px;background:var(--thread);opacity:.6;}
+  footer{text-align:center;margin-top:48px;font-size:11px;color:var(--muted);letter-spacing:.04em;padding:0 18px;}
+  footer a{color:var(--mamba);text-decoration:none;}
+  @media (prefers-reduced-motion: reduce){.panel{opacity:1!important;transform:none!important;transition:box-shadow .2s ease;}}
+</style>
+</head>
+<body>
+  <div class="bar">
+    <div class="grp" id="leathers">
+      <span class="lbl">Leather</span>
+      <button class="chip" data-leather="mamba" aria-pressed="false"><span class="dot" style="background:#3c5417"></span>Mamba</button>
+      <button class="chip" data-leather="espresso" aria-pressed="true"><span class="dot" style="background:#4b3624"></span>Espresso</button>
+      <button class="chip" data-leather="black" aria-pressed="false"><span class="dot" style="background:#1a1a16"></span>Black</button>
+    </div>
+    <div class="grp" id="threads">
+      <span class="lbl">Thread</span>
+      <button class="chip" data-thread="#c9a24a" aria-pressed="true"><span class="dot" style="background:#c9a24a"></span>Gold</button>
+      <button class="chip" data-thread="#d4d7db" aria-pressed="false"><span class="dot" style="background:#d4d7db"></span>Silver</button>
+      <button class="chip" data-thread="#f4f2ec" aria-pressed="false"><span class="dot" style="background:#f4f2ec"></span>White</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="kick">Fig · 무화과 — Recommended Lockups</div>
+
+    <!-- HERO -->
+    <article class="panel hero">
+      <span class="fig">Fig</span>
+      <span class="seam"></span>
+      <span class="kr">무화과</span>
+    </article>
+    <div class="cap">
+      <span class="reco">Recommended</span>
+      <div class="nm">The <b>Signature</b></div>
+      <div class="pair">Allura &nbsp;×&nbsp; Nanum Pen Script</div>
+      <div class="why">Two hand-signed pen scripts, weighted to match — the closest read to your reference signature. Fig leads, 무화과 signs beneath across a single stitched seam. Elegant, legible at size, unmistakably bespoke.</div>
+    </div>
+
+    <!-- ALTERNATES -->
+    <div class="alts">
+      <div class="alt couture">
+        <article class="panel">
+          <span class="fig">Fig</span>
+          <span class="seam"></span>
+          <span class="kr">무화과</span>
+        </article>
+        <div class="cap">
+          <div class="nm">The <b>Couture</b></div>
+          <div class="pair">Pinyon Script &nbsp;×&nbsp; Nanum Myeongjo</div>
+          <div class="why">Formal calligraphy over a refined Korean serif — regal, fashion-house. Dressier than the hero.</div>
+        </div>
+      </div>
+
+      <div class="alt gt">
+        <article class="panel">
+          <div class="row"><span class="fig">Fig</span><span class="bar2"></span><span class="kr">무화과</span></div>
+        </article>
+        <div class="cap">
+          <div class="nm">The <b>GT</b></div>
+          <div class="pair">Bebas Neue &nbsp;×&nbsp; Black Han Sans</div>
+          <div class="why">Bold condensed caps, set side by side — motorsport energy that nods to the Porsche build.</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>Tap a swatch above to preview each lockup on espresso, mamba green, or black leather. &nbsp;·&nbsp; <a href="./">Back to all 86 fonts</a></footer>
+  </div>
+
+<script>
+  var LEATHER={
+    mamba:"radial-gradient(120% 100% at 30% 0%, rgba(255,255,255,.10), transparent 48%), linear-gradient(158deg,#3c5417,#27380e 68%,#1b2908)",
+    espresso:"radial-gradient(120% 100% at 30% 0%, rgba(255,255,255,.09), transparent 48%), linear-gradient(158deg,#4b3624,#33241a 64%,#281a10)",
+    black:"radial-gradient(120% 100% at 30% 0%, rgba(255,255,255,.08), transparent 48%), linear-gradient(158deg,#23231d,#151510 68%,#0b0b08)"
+  };
+  var root=document.documentElement;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var panels=Array.prototype.slice.call(document.querySelectorAll('.panel'));
+  if(!reduce && 'IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+    panels.forEach(function(p){io.observe(p);});
+  } else { panels.forEach(function(p){p.classList.add('in');}); }
+  function wire(id,fn){var g=document.getElementById(id);g.addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;
+    g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});fn(b);});}
+  wire('leathers',function(b){root.style.setProperty('--swatch',LEATHER[b.dataset.leather]);});
+  wire('threads',function(b){root.style.setProperty('--thread',b.dataset.thread);});
+</script>
+</body>
+</html>
