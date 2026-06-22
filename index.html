@@ -2,213 +2,122 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fig — Lettering Studies · Porsche Mamba Green</title>
-<meta name="description" content="50 custom 'Fig' lettering studies for a mamba-green leather build — scripts, serifs, sans, display and gothic, previewed as embroidery on leather.">
-<meta name="theme-color" content="#1d2b09">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fig — Lettering</title>
+<meta name="theme-color" content="#2c1d12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Allura&family=Sacramento&family=Parisienne&family=Pinyon+Script&family=Alex+Brush&family=Tangerine:wght@400;700&family=Yellowtail&family=Dancing+Script:wght@600&family=Kaushan+Script&family=Satisfy&family=Cookie&family=Niconne&family=Mr+Dafoe&family=Herr+Von+Muellerhoff&family=Italianno&family=Petit+Formal+Script&family=Style+Script&family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Bodoni+Moda:ital,wght@0,600;1,600&family=Cinzel:wght@600&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,600;1,500&family=Marcellus&family=Forum&family=Italiana&family=Tenor+Sans&family=Prata&family=DM+Serif+Display:ital@0;1&family=Bellefair&family=Cardo:ital@0;1&family=Montserrat:wght@700&family=Oswald:wght@600&family=Bebas+Neue&family=Anton&family=Archivo+Black&family=Poppins:wght@600&family=Jost:wght@500&family=Josefin+Sans:wght@600&family=Orbitron:wght@600&family=Audiowide&family=Michroma&family=Megrim&family=Monoton&family=Iceland&family=Rajdhani:wght@600&family=Syncopate:wght@700&family=UnifrakturMaguntia&family=Pirata+One&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0c0e08; --paper:#e9eadf; --muted:rgba(233,234,223,.58);
-    --mamba:#b8d62b; --hair:rgba(255,255,255,.10);
+    --paper:#ece7df; --muted:rgba(236,231,223,.6); --mamba:#b8d62b; --hair:rgba(255,255,255,.12);
     --thread:#c9a24a;
-    --swatch: radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,.10), transparent 46%), linear-gradient(158deg,#3c5417,#27380e 68%,#1c2a08);
-    --fig:74px;
+    --swatch: radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,.08), transparent 46%), linear-gradient(158deg,#4b3624,#33241620 60%,#2c1d12);
+    --fig: clamp(58px, 11vw, 82px);
     --ease:cubic-bezier(.23,1,.32,1);
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;overflow-x:hidden;}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html{overflow-x:hidden;-webkit-text-size-adjust:100%;}
   body{
     font-family:"Jost",system-ui,sans-serif;color:var(--paper);
-    background:
-      radial-gradient(110% 70% at 50% -8%, rgba(184,214,43,.10) 0%, transparent 55%),
-      linear-gradient(170deg,#15170f,#0c0e08 70%);
-    background-attachment:fixed;-webkit-font-smoothing:antialiased;
-    padding:54px 28px 90px;min-height:100dvh;line-height:1.5;
+    background:linear-gradient(170deg,#1a140e,#0c0a07 70%);background-attachment:fixed;
+    -webkit-font-smoothing:antialiased;min-height:100dvh;
   }
-  .wrap{max-width:1320px;margin:0 auto;}
-  /* header */
-  header{max-width:760px;margin:0 0 28px;}
-  .kick{font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--mamba);font-weight:600;margin-bottom:16px;}
-  h1{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(38px,6vw,62px);line-height:.98;letter-spacing:-.01em;}
-  h1 em{font-style:italic;color:var(--mamba);}
-  header p{color:var(--muted);font-size:15px;margin-top:14px;max-width:60ch;}
-  /* controls */
-  .controls{display:flex;flex-wrap:wrap;gap:22px 34px;align-items:flex-end;
-    margin:26px 0 30px;padding:18px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);}
-  .ctl .lbl{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;font-weight:600;}
-  .chips{display:flex;gap:8px;flex-wrap:wrap;}
-  .chip{font:inherit;font-size:12px;letter-spacing:.02em;color:var(--paper);background:rgba(255,255,255,.05);
-    border:1px solid var(--hair);border-radius:999px;padding:7px 15px;cursor:pointer;
-    transition:background .18s var(--ease),border-color .18s var(--ease),color .18s var(--ease),transform .12s var(--ease);
-    min-height:34px;}
-  @media(hover:hover){.chip:hover{border-color:rgba(184,214,43,.5);}}
-  .chip:active{transform:scale(.96);}
+  /* slim control bar */
+  .bar{position:sticky;top:0;z-index:20;display:flex;gap:14px 26px;flex-wrap:wrap;align-items:center;
+    padding:calc(env(safe-area-inset-top) + 12px) 18px 12px;
+    background:rgba(18,14,10,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--hair);}
+  .grp{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .grp .lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-right:2px;}
+  .chip{font:inherit;font-size:12.5px;color:var(--paper);background:rgba(255,255,255,.06);
+    border:1px solid var(--hair);border-radius:999px;padding:0 14px;height:38px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;
+    transition:background .18s var(--ease),border-color .18s var(--ease),color .18s var(--ease),transform .12s var(--ease);}
+  .chip .dot{width:12px;height:12px;border-radius:50%;border:1px solid rgba(255,255,255,.35);}
+  .chip:active{transform:scale(.95);}
   .chip[aria-pressed="true"]{background:var(--mamba);color:#16200a;border-color:var(--mamba);font-weight:600;}
-  .chip.swatch[aria-pressed="true"]{color:#16200a;}
   .chip:focus-visible{outline:2px solid var(--mamba);outline-offset:2px;}
-  .ctl.size{min-width:170px;flex:1;max-width:240px;}
-  input[type=range]{width:100%;accent-color:var(--mamba);cursor:pointer;}
-  .count{margin-left:auto;font-size:12px;color:var(--muted);align-self:center;}
-  .count b{color:var(--paper);}
+  @media(hover:hover){.chip:hover{border-color:rgba(184,214,43,.5);}}
   /* grid */
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  @media(max-width:1080px){.grid{grid-template-columns:repeat(2,1fr);}}
-  @media(max-width:640px){.grid{grid-template-columns:1fr;}}
-  /* card = leather swatch */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:18px 18px 60px;max-width:1320px;margin:0 auto;}
+  @media(max-width:1024px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.grid{grid-template-columns:1fr;gap:14px;padding:14px 14px 48px;}}
   .card{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.07);
-    box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 18px 40px -22px rgba(0,0,0,.8);
-    transition:transform .4s var(--ease),box-shadow .3s var(--ease),opacity .55s var(--ease);}
-  @media(scripting:enabled){.card{opacity:0;transform:translateY(14px);}.card.in{opacity:1;transform:none;}}
-  @media(hover:hover){.card:hover{transform:translateY(-5px);box-shadow:0 24px 50px -22px rgba(0,0,0,.9),0 0 0 1px rgba(184,214,43,.25);}}
-  .card:active{transform:translateY(-2px) scale(.995);transition-duration:.12s;}
-  .swatch{background:var(--swatch);min-height:188px;display:flex;align-items:center;justify-content:center;padding:18px 22px;position:relative;}
-  .swatch::after{content:"";position:absolute;inset:10px;border:1px dashed rgba(255,255,255,.10);border-radius:9px;pointer-events:none;}
-  .fig{color:var(--thread);font-size:var(--fig);line-height:1.05;text-align:center;
-    text-shadow:0 1px 1px rgba(0,0,0,.55),0 -1px 0 rgba(255,255,255,.10);
-    transition:color .25s var(--ease);max-width:100%;word-break:break-word;}
-  .meta{display:flex;align-items:center;justify-content:space-between;gap:10px;
-    padding:13px 16px;background:rgba(10,12,7,.66);border-top:1px solid var(--hair);}
-  .meta .nm{font-size:13px;font-weight:500;letter-spacing:.01em;}
-  .meta .cat{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--mamba);
-    border:1px solid rgba(184,214,43,.4);border-radius:6px;padding:3px 7px;white-space:nowrap;}
-  footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--hair);
-    font-size:11px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;letter-spacing:.04em;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    .card{opacity:1 !important;transform:none !important;transition:box-shadow .2s ease;}
-  }
+    box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 16px 36px -22px rgba(0,0,0,.85);
+    transition:transform .4s var(--ease),box-shadow .3s var(--ease),opacity .5s var(--ease);}
+  @media(scripting:enabled){.card{opacity:0;transform:translateY(12px);}.card.in{opacity:1;transform:none;}}
+  @media(hover:hover){.card:hover{transform:translateY(-5px);box-shadow:0 22px 46px -22px rgba(0,0,0,.9),0 0 0 1px rgba(184,214,43,.22);}}
+  .card:active{transform:scale(.992);transition-duration:.12s;}
+  .swatch{background:var(--swatch);min-height:170px;display:flex;align-items:center;justify-content:center;padding:18px 20px;position:relative;}
+  @media(max-width:600px){.swatch{min-height:190px;}}
+  .swatch::after{content:"";position:absolute;inset:11px;border:1px dashed rgba(255,255,255,.12);border-radius:9px;pointer-events:none;}
+  .fig{color:var(--thread);font-size:var(--fig);line-height:1.05;text-align:center;max-width:100%;word-break:break-word;
+    text-shadow:0 1px 1px rgba(0,0,0,.55),0 -1px 0 rgba(255,255,255,.10);transition:color .25s var(--ease);}
+  .nm{font-size:11px;letter-spacing:.02em;color:var(--muted);padding:9px 14px;background:rgba(8,6,4,.6);border-top:1px solid var(--hair);text-align:center;}
+  @media (prefers-reduced-motion: reduce){.card{opacity:1!important;transform:none!important;transition:box-shadow .2s ease;}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div class="kick">Lettering Studies · Porsche Edition</div>
-    <h1>“<em>Fig</em>” — 50 front-panel treatments</h1>
-    <p>Custom front lettering for the mamba-green leather build. Each study is previewed as embroidery on leather — flip the leather and thread to match the real hide, filter by style, and scale to read it at size.</p>
-  </header>
-
-  <div class="controls">
-    <div class="ctl">
-      <div class="lbl">Style</div>
-      <div class="chips" id="filters">
-        <button class="chip" data-cat="all" aria-pressed="true">All</button>
-        <button class="chip" data-cat="sig" aria-pressed="false">Signature</button>
-        <button class="chip" data-cat="serif" aria-pressed="false">Serif</button>
-        <button class="chip" data-cat="sans" aria-pressed="false">Sans</button>
-        <button class="chip" data-cat="display" aria-pressed="false">Display</button>
-        <button class="chip" data-cat="gothic" aria-pressed="false">Gothic</button>
-      </div>
+  <div class="bar">
+    <div class="grp" id="leathers">
+      <span class="lbl">Leather</span>
+      <button class="chip" data-leather="mamba" aria-pressed="false"><span class="dot" style="background:#3c5417"></span>Mamba Green</button>
+      <button class="chip" data-leather="espresso" aria-pressed="true"><span class="dot" style="background:#4b3624"></span>Espresso</button>
+      <button class="chip" data-leather="black" aria-pressed="false"><span class="dot" style="background:#1a1a16"></span>Black</button>
     </div>
-    <div class="ctl">
-      <div class="lbl">Leather</div>
-      <div class="chips" id="leathers">
-        <button class="chip swatch" data-leather="green" aria-pressed="true">Mamba Green</button>
-        <button class="chip swatch" data-leather="black" aria-pressed="false">Black</button>
-        <button class="chip swatch" data-leather="tan" aria-pressed="false">Tan</button>
-      </div>
+    <div class="grp" id="threads">
+      <span class="lbl">Thread</span>
+      <button class="chip" data-thread="#c9a24a" aria-pressed="true"><span class="dot" style="background:#c9a24a"></span>Gold</button>
+      <button class="chip" data-thread="#d4d7db" aria-pressed="false"><span class="dot" style="background:#d4d7db"></span>Silver</button>
+      <button class="chip" data-thread="#f4f2ec" aria-pressed="false"><span class="dot" style="background:#f4f2ec"></span>White</button>
+      <button class="chip" data-thread="#e7d9b6" aria-pressed="false"><span class="dot" style="background:#e7d9b6"></span>Cream</button>
     </div>
-    <div class="ctl">
-      <div class="lbl">Thread</div>
-      <div class="chips" id="threads">
-        <button class="chip" data-thread="#c9a24a" aria-pressed="true">Gold</button>
-        <button class="chip" data-thread="#d4d7db" aria-pressed="false">Silver</button>
-        <button class="chip" data-thread="#f4f2ec" aria-pressed="false">White</button>
-        <button class="chip" data-thread="#e7d9b6" aria-pressed="false">Cream</button>
-      </div>
-    </div>
-    <div class="ctl size">
-      <div class="lbl">Size</div>
-      <input type="range" id="size" min="44" max="120" value="74">
-    </div>
-    <div class="count" id="count"></div>
   </div>
 
   <div class="grid" id="grid"></div>
 
-  <footer>
-    <span>Fig · custom lettering studies — preview only, final stitch sampled on hide</span>
-    <span>50 typefaces · Google Fonts</span>
-  </footer>
-</div>
-
 <script>
-  var FONTS = [
-    // Signature / script
-    ["Great Vibes","sig"],["Allura","sig"],["Sacramento","sig"],["Parisienne","sig"],
-    ["Pinyon Script","sig"],["Alex Brush","sig"],["Tangerine","sig",700],["Yellowtail","sig"],
-    ["Dancing Script","sig",600],["Kaushan Script","sig"],["Satisfy","sig"],["Cookie","sig"],
-    ["Niconne","sig"],["Mr Dafoe","sig"],["Herr Von Muellerhoff","sig"],["Italianno","sig"],
-    ["Petit Formal Script","sig"],["Style Script","sig"],
-    // Serif / elegant
-    ["Playfair Display","serif",600],["Cormorant Garamond","serif",600],["Bodoni Moda","serif",600],
-    ["Cinzel","serif",600],["Cinzel Decorative","serif",700],["EB Garamond","serif",600],
-    ["Marcellus","serif"],["Forum","serif"],["Italiana","serif"],["Tenor Sans","serif"],
-    ["Prata","serif"],["DM Serif Display","serif"],["Bellefair","serif"],["Cardo","serif"],
-    // Sans / modern
-    ["Montserrat","sans",700],["Oswald","sans",600],["Bebas Neue","sans"],["Anton","sans"],
-    ["Archivo Black","sans"],["Poppins","sans",600],["Jost","sans",500],["Josefin Sans","sans",600],
-    // Display / tech / luxe
-    ["Orbitron","display",600],["Audiowide","display"],["Michroma","display"],["Megrim","display"],
-    ["Monoton","display"],["Iceland","display"],["Rajdhani","display",600],["Syncopate","display",700],
-    // Gothic / blackletter
-    ["UnifrakturMaguntia","gothic"],["Pirata One","gothic"]
+  var FONTS=[
+    ["Great Vibes"],["Allura"],["Sacramento"],["Parisienne"],["Pinyon Script"],["Alex Brush"],
+    ["Tangerine",700],["Yellowtail"],["Dancing Script",600],["Kaushan Script"],["Satisfy"],["Cookie"],
+    ["Niconne"],["Mr Dafoe"],["Herr Von Muellerhoff"],["Italianno"],["Petit Formal Script"],["Style Script"],
+    ["Playfair Display",600],["Cormorant Garamond",600],["Bodoni Moda",600],["Cinzel",600],["Cinzel Decorative",700],
+    ["EB Garamond",600],["Marcellus"],["Forum"],["Italiana"],["Tenor Sans"],["Prata"],["DM Serif Display"],["Bellefair"],["Cardo"],
+    ["Montserrat",700],["Oswald",600],["Bebas Neue"],["Anton"],["Archivo Black"],["Poppins",600],["Jost",500],["Josefin Sans",600],
+    ["Orbitron",600],["Audiowide"],["Michroma"],["Megrim"],["Monoton"],["Iceland"],["Rajdhani",600],["Syncopate",700],
+    ["UnifrakturMaguntia"],["Pirata One"]
   ];
-  var CATLABEL={sig:"Signature",serif:"Serif",sans:"Sans",display:"Display",gothic:"Gothic"};
   var LEATHER={
-    green:"radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,.10), transparent 46%), linear-gradient(158deg,#3c5417,#27380e 68%,#1c2a08)",
-    black:"radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,.08), transparent 46%), linear-gradient(158deg,#23231d,#151510 68%,#0b0b08)",
-    tan:"radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,.12), transparent 46%), linear-gradient(158deg,#7c5c31,#5e4523 68%,#48351a)"
+    mamba:"radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,.10), transparent 46%), linear-gradient(158deg,#3c5417,#27380e 68%,#1c2a08)",
+    espresso:"radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,.08), transparent 46%), linear-gradient(158deg,#4b3624,#33241a 64%,#2a1c11)",
+    black:"radial-gradient(120% 100% at 28% 0%, rgba(255,255,255,.08), transparent 46%), linear-gradient(158deg,#23231d,#151510 68%,#0b0b08)"
   };
   var grid=document.getElementById('grid'), root=document.documentElement;
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // build cards
   FONTS.forEach(function(f){
-    var name=f[0], cat=f[1], wght=f[2]||400;
-    var card=document.createElement('article');
-    card.className='card'; card.dataset.cat=cat;
-    card.innerHTML =
-      '<div class="swatch"><span class="fig" style="font-family:\''+name+'\';font-weight:'+wght+'">Fig</span></div>'+
-      '<div class="meta"><span class="nm">'+name+'</span><span class="cat">'+CATLABEL[cat]+'</span></div>';
-    grid.appendChild(card);
+    var name=f[0], w=f[1]||400, c=document.createElement('article');
+    c.className='card';
+    c.innerHTML='<div class="swatch"><span class="fig" style="font-family:\''+name+'\';font-weight:'+w+'">Fig</span></div><div class="nm">'+name+'</div>';
+    grid.appendChild(c);
   });
   var cards=Array.prototype.slice.call(grid.children);
-  document.getElementById('count').innerHTML='<b>'+cards.length+'</b> studies';
 
-  // reveal
   if(!reduce && 'IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){
       es.filter(function(e){return e.isIntersecting;})
         .sort(function(a,b){return cards.indexOf(a.target)-cards.indexOf(b.target);})
-        .forEach(function(e,i){var el=e.target,d=Math.min(i,5)*50;el.style.transitionDelay=d+'ms';el.classList.add('in');io.unobserve(el);
-          setTimeout(function(){el.style.transitionDelay='';},600+d);});
-    },{rootMargin:'0px 0px -6% 0px',threshold:.06});
+        .forEach(function(e,i){var el=e.target,d=Math.min(i,5)*45;el.style.transitionDelay=d+'ms';el.classList.add('in');io.unobserve(el);
+          setTimeout(function(){el.style.transitionDelay='';},560+d);});
+    },{rootMargin:'0px 0px -5% 0px',threshold:.05});
     cards.forEach(function(c){io.observe(c);});
   } else { cards.forEach(function(c){c.classList.add('in');}); }
 
-  // group toggles
-  function wireGroup(id, fn){
-    var grp=document.getElementById(id);
-    grp.addEventListener('click',function(e){
-      var b=e.target.closest('.chip'); if(!b)return;
-      grp.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed', c===b?'true':'false');});
-      fn(b);
-    });
-  }
-  wireGroup('filters',function(b){
-    var cat=b.dataset.cat, shown=0;
-    cards.forEach(function(c){
-      var ok=(cat==='all'||c.dataset.cat===cat);
-      c.style.display=ok?'':'none'; if(ok)shown++;
-    });
-    document.getElementById('count').innerHTML='<b>'+shown+'</b> studies';
-  });
-  wireGroup('leathers',function(b){ root.style.setProperty('--swatch', LEATHER[b.dataset.leather]); });
-  wireGroup('threads',function(b){ root.style.setProperty('--thread', b.dataset.thread); });
-  document.getElementById('size').addEventListener('input',function(e){ root.style.setProperty('--fig', e.target.value+'px'); });
+  function wire(id,fn){var g=document.getElementById(id);g.addEventListener('click',function(e){
+    var b=e.target.closest('.chip');if(!b)return;
+    g.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed',c===b?'true':'false');});fn(b);});}
+  wire('leathers',function(b){root.style.setProperty('--swatch',LEATHER[b.dataset.leather]);});
+  wire('threads',function(b){root.style.setProperty('--thread',b.dataset.thread);});
 </script>
 </body>
 </html>
